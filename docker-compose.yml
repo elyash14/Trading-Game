@@ -1,0 +1,22 @@
+version: '3.5'
+
+services:
+    database:
+        image: mdillon/postgis
+        restart: always
+        environment:
+            POSTGRES_DB: traider
+            POSTGRES_USER: traider
+            POSTGRES_PASSWORD: traider445566
+        ports:
+            - 2232:5432
+        volumes:
+            - traider-db:/var/lib/postgresql/data
+volumes:
+    traider-db:
+
+networks:
+    default:
+        name: traider-net
+
+
