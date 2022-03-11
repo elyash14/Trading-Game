@@ -1,0 +1,314 @@
+{
+	"info": {
+		"_postman_id": "b131d805-494a-4806-b8f7-399717eddcd2",
+		"name": "Trader",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "list of all shares",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "manager123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "manager",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"symbol\": \"ABC\",\n    \"rate\": \"230.00\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3333/shares",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"shares"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update share",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "manager123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "manager",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"symbol\": \"ABC\",\n    \"rate\": \"220.00\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3333/shares/update",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"shares",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list of all users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "manager123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "manager",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"symbol\": \"ABC\",\n    \"rate\": \"230.00\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3333/users",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "selling order",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "user5",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"symbol\": \"ABC\",\n    \"count\": 10\n}"
+				},
+				"url": {
+					"raw": "localhost:3333/orders/sell",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"orders",
+						"sell"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buying order",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"symbol\": \"ABC\",\n    \"count\": 20\n}"
+				},
+				"url": {
+					"raw": "localhost:3333/orders/buy",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"orders",
+						"buy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "canceling order",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "localhost:3333/orders/cancel/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"orders",
+						"cancel",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "resolving orders",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "manager123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "manager",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "localhost:3333/orders/resolve",
+					"host": [
+						"localhost"
+					],
+					"port": "3333",
+					"path": [
+						"orders",
+						"resolve"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
