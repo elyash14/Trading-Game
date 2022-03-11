@@ -2,12 +2,12 @@ import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
-import shareRouter from './api/share';
 import { afterLogin, basicAuthOptions } from './utilities/auth';
 import { User } from '@prisma/client';
 import basicAuth from 'express-basic-auth';
 import userRouter from './api/user';
 import orderRouter from './api/order';
+import managerRouter from './api/manager';
 
 dotenv.config()
 const { PORT } = process.env;
@@ -49,7 +49,7 @@ app.get('/ping', (_req: Request, res: Response) => {
 });
 
 // set all routes
-app.use(shareRouter);
+app.use(managerRouter);
 app.use(userRouter);
 app.use(orderRouter);
 
