@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 import { Role } from '@prisma/client';
+import { hashPassword } from '../src/utilities/hashing'
 const prisma = new PrismaClient()
 
 async function main() {
@@ -8,6 +9,7 @@ async function main() {
         update: {},
         create: {
             username: 'manager',
+            password: hashPassword("manager123"),
             name: 'Chandler Bing',
             role: Role.MANAGER,
         },
@@ -45,10 +47,11 @@ async function main() {
             }
         }
     });
-    
+
     const users = [
         {
             username: 'user1',
+            password: hashPassword("123"),
             name: 'Ross Geller',
             portfolio: {
                 create: {
@@ -70,6 +73,7 @@ async function main() {
         },
         {
             username: 'user2',
+            password: hashPassword("123"),
             name: 'Rachel Green',
             portfolio: {
                 create: {
@@ -91,6 +95,7 @@ async function main() {
         },
         {
             username: 'user3',
+            password: hashPassword("123"),
             name: 'Joey Tribbiani',
             portfolio: {
                 create: {
@@ -116,6 +121,7 @@ async function main() {
         },
         {
             username: 'user4',
+            password: hashPassword("123"),
             name: 'Phoebe Buffay',
             portfolio: {
                 create: {
@@ -137,6 +143,7 @@ async function main() {
         },
         {
             username: 'user5',
+            password: hashPassword("123"),
             name: 'Monica Geller',
             portfolio: {
                 create: {
