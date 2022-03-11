@@ -123,4 +123,41 @@ orderRouter.post('/orders/buy', async (req: Request, res: Response) => {
     res.json({ message: 'Order created successfully' });
 });
 
+
+/**
+ * @api {get} /orders/cancel/:id Cancel an order
+ */
+orderRouter.delete('/orders/cancel/:id', async (req: Request, res: Response) => {
+    const user = req.user;
+
+    // validate request
+    const order = await prisma.order.findFirst({
+        where: {
+            id: Number(req.params.id),
+            status: OrderStatus.PENDING
+        },
+        include: { portfolio: true }
+    });
+
+    // check order exists
+    if (!order) {
+        return res.status(400).send({ message: 'Order not found' });
+    }
+
+    // check if the order belongs to the user
+    if (order.portfolio.userId !== user?.id) {
+        return res.status(403).send({ message: 'You are not the owner of this order' });
+    }
+
+    // cancel order
+    await prisma.order.update({
+        where: { id: order.id },
+        data: {
+            status: OrderStatus.CANCELED
+        }
+    });
+
+    res.json({ message: 'Order canceled successfully' });
+});
+
 export default orderRouter;
