@@ -7,6 +7,7 @@ import { afterLogin, basicAuthOptions } from './utilities/auth';
 import { User } from '@prisma/client';
 import basicAuth from 'express-basic-auth';
 import userRouter from './api/user';
+import orderRouter from './api/order';
 
 dotenv.config()
 const { PORT } = process.env;
@@ -50,6 +51,7 @@ app.get('/ping', (_req: Request, res: Response) => {
 // set all routes
 app.use(shareRouter);
 app.use(userRouter);
+app.use(orderRouter);
 
 // start server
 const port = Number(PORT) || 3333;

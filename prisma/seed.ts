@@ -56,7 +56,7 @@ async function main() {
             portfolio: {
                 create: {
                     name: 'My Portfolio',
-                    tradeHistory: {
+                    tradeHistories: {
                         create: [
                             {
                                 shareId: shares[0].id,
@@ -78,7 +78,7 @@ async function main() {
             portfolio: {
                 create: {
                     name: 'My Portfolio',
-                    tradeHistory: {
+                    tradeHistories: {
                         create: [
                             {
                                 shareId: shares[1].id,
@@ -100,7 +100,7 @@ async function main() {
             portfolio: {
                 create: {
                     name: 'My Portfolio',
-                    tradeHistory: {
+                    tradeHistories: {
                         create: [
                             {
                                 shareId: shares[0].id,
@@ -126,7 +126,7 @@ async function main() {
             portfolio: {
                 create: {
                     name: 'My Portfolio',
-                    tradeHistory: {
+                    tradeHistories: {
                         create: [
                             {
                                 shareId: shares[0].id,
@@ -148,7 +148,7 @@ async function main() {
             portfolio: {
                 create: {
                     name: 'My Portfolio',
-                    tradeHistory: {
+                    tradeHistories: {
                         create: [
                             {
                                 shareId: shares[0].id,

@@ -15,33 +15,46 @@ enum Role {
   MANAGER
 }
 
+enum OrderStatus {
+  PENDING
+  SUCCESS
+  CANCELED
+}
+
+enum OrderType {
+  SELL
+  BUY
+}
+
 model User {
-  id        Int         @id @default(autoincrement())
-  username  String      @unique
+  id        Int        @id @default(autoincrement())
+  username  String     @unique
   password  String
   name      String
-  role      Role        @default(CLIENT)
+  role      Role       @default(CLIENT)
   portfolio Portfolio?
 }
 
 model Share {
-  id           Int           @id @default(autoincrement())
-  symbol       String        @db.VarChar(3)
-  count        Int
-  rate         Float
-  updatedAt    DateTime      @default(now())
-  tradeHistory TradeHistory[]
+  id             Int      @id @default(autoincrement())
+  symbol         String   @db.VarChar(3)
+  count          Int
+  rate           Float
+  updatedAt      DateTime @default(now())
+  tradeHistories Trade[]
+  orders         Order[]
 }
 
 model Portfolio {
-  id     Int           @id @default(autoincrement())
-  name   String?
-  user   User          @relation(fields: [userId], references: [id])
-  userId Int           @unique
-  tradeHistory  TradeHistory[]
+  id             Int     @id @default(autoincrement())
+  name           String?
+  user           User    @relation(fields: [userId], references: [id])
+  userId         Int     @unique
+  tradeHistories Trade[]
+  orders         Order[]
 }
 
-model TradeHistory {
+model Trade {
   id          Int       @id @default(autoincrement())
   portfolio   Portfolio @relation(fields: [portfolioId], references: [id])
   portfolioId Int
@@ -49,4 +62,16 @@ model TradeHistory {
   shareId     Int
   count       Int
   createdAt   DateTime  @default(now())
+}
+
+model Order {
+  id          Int         @id @default(autoincrement())
+  portfolio   Portfolio   @relation(fields: [portfolioId], references: [id])
+  portfolioId Int
+  share       Share       @relation(fields: [shareId], references: [id])
+  shareId     Int
+  type        OrderType
+  count       Int
+  status      OrderStatus @default(PENDING)
+  createdAt   DateTime    @default(now())
 }

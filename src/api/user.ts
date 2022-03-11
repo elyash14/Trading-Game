@@ -19,7 +19,7 @@ userRouter.get('/users', async (_req: Request, res: Response) => {
             portfolio: {
                 select: {
                     name: true,
-                    tradeHistory: {
+                    tradeHistories: {
                         select: {
                             count: true,
                             createdAt: true,
